@@ -5,7 +5,7 @@ cimport openctm
 cimport numpy as np
 
 uvmaps = [
-    openctm.CTM_UV_MAP_1, 
+    openctm.CTM_UV_MAP_1,
     openctm.CTM_UV_MAP_2,
     openctm.CTM_UV_MAP_3,
     openctm.CTM_UV_MAP_4,
@@ -48,7 +48,7 @@ cdef class CTMfile:
 
         if mode == 'r':
             self.ctx = openctm.ctmNewContext(openctm.CTM_IMPORT)
-            openctm.ctmLoad(self.ctx, self.filename.encode('utf-8'))
+            openctm.ctmLoad(self.ctx, self.filename)
             err = ctmGetError(self.ctx)
             if err != openctm.CTM_NONE:
                 raise IOError(openctm.ctmErrorString(err))
@@ -182,7 +182,7 @@ cdef class CTMfile:
 
         pts = self.pts
         polys = self.polys
-        openctm.ctmDefineMesh(self.ctx, <float*>pts.data, self.length, 
+        openctm.ctmDefineMesh(self.ctx, <float*>pts.data, self.length,
             <unsigned int*> polys.data, <unsigned int>len(self.polys), cnorms)
         err = openctm.ctmGetError(self.ctx)
         if err != openctm.CTM_NONE:

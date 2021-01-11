@@ -454,8 +454,8 @@ def show(data, types=("inflated", ), recache=False, cmap='RdBu_r', layout=None,
     class JSMixer(serve.JSProxy):
         @property
         def view_props(self):
-            """An enumerated list of settable properties for views. 
-            There may be a way to get this from the javascript object, 
+            """An enumerated list of settable properties for views.
+            There may be a way to get this from the javascript object,
             but I (ML) don't know how.
 
             There may be additional properties we want to set in views
@@ -485,7 +485,7 @@ def show(data, types=("inflated", ), recache=False, cmap='RdBu_r', layout=None,
             """
             # Set unfolding level first, as it interacts with other arguments
             subject_list = self.ui.surface._folders.attrs.keys()
-            # Better to only self.view_props once; it interacts with javascript, 
+            # Better to only self.view_props once; it interacts with javascript,
             # don't want to do that too often, it leads to glitches.
             vw_props = copy.copy(self.view_props)
             for subject in subject_list:
@@ -513,7 +513,7 @@ def show(data, types=("inflated", ), recache=False, cmap='RdBu_r', layout=None,
             ----------
             frame_time : scalar
                 time (in seconds) to specify for this frame.
-            
+
             Notes
             -----
             If multiple subjects are present, only retrieves view for first subject.
@@ -727,7 +727,7 @@ def show(data, types=("inflated", ), recache=False, cmap='RdBu_r', layout=None,
                     allframes.append(frame)
             return allframes
 
-        def make_movie_views(self, animation, filename="brainmovie%07d.png", 
+        def make_movie_views(self, animation, filename="brainmovie%07d.png",
             offset=0, fps=30, size=(1920, 1080), alpha=1, frame_sleep=0.05,
             frame_start=0, interpolation="linear"):
             """Renders movie frames for animation of mesh movement
